@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Zoltán Majoros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Zoltán Majoros' Portfolio">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700,400italic&display=swap">
+    <style>
+        body {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 10px;
+            position: relative;
+            font: 15px/1.5 "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+                sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            color: #444;
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2;
+            margin-top: 35px;
+        }
+
+        body.light-mode {
+            color: #444;
+            background: #fff8f8
+        }
+
+        body.dark-mode {
+            color: #c9d1d9;
+            background: #2d2d2e
+        }
+
+        a:link {
+            color: hsl(212, 100%, 50%)
+        }
+
+        a:visited {
+            color: hsl(212, 100%, 50%)
+        }
+
+        li {
+            font-weight: bold;
+        }
+
+        nav {
+            /* background-color: #f5f5f5; */
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #444;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #58a6ff;
+        }
+
+        .icon {
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .icon:hover {
+            opacity: 0.7;
+        }
+
+        .preview-image-container {
+            max-width: 640px;
+            width: 100%;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+        }
+
+        .theme-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-icons a {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .footer-icons a:last-child {
+            margin-right: 0;
+        }
+    </style>
+    <script>
+        let lightmode = true;
+
+        function changeMode() {
+            const imgElement = document.getElementById("themeIcon");
+            const githubIconElement = document.getElementById("githubIcon");
+            const tumblrIconElement = document.getElementById("tumblrIcon");
+            const twitterIconElement = document.getElementById("twitterIcon");
+            lightmode = !lightmode;
+
+            if (lightmode) {
+                document.body.className = 'light-mode';
+                themeIcon.src = "assets/dark-mode.svg";
+                githubIconElement.src = "assets/Github_black.svg";
+                tumblrIconElement.src = "assets/Tumblr_black.svg";
+                twitterIconElement.src = "assets/Twitter_black.svg";
+            } else {
+                document.body.className = 'dark-mode';
+                githubIconElement.src = "assets/Github_white.svg";
+                tumblrIconElement.src = "assets/Tumblr_white.svg";
+                twitterIconElement.src = "assets/Twitter_white.svg";
+                themeIcon.src = "assets/light-mode.svg";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var lazyImages = [].slice.call(document.querySelectorAll("img[data-src]"));
+
+            if ("IntersectionObserver" in window) {
+                var observer = new IntersectionObserver(function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            var img = entry.target;
+                            var highResImg = new Image();
+                            highResImg.src = img.dataset.src;
+
+                            highResImg.onload = function () {
+                                img.src = highResImg.src;
+                                img.removeAttribute("data-src");
+                                observer.unobserve(img);
+                            };
+                        }
+                    });
+                });
+
+                lazyImages.forEach(function (img) {
+                    observer.observe(img);
+                });
+            }
+        });      
+    </script>
+</head>
+<body class="light-mode">
+    <nav>
+        <div>
+            <!-- <a href="#about">About</a> -->
+            <a href="#bio">Bio</a>
+            <a href="#career">Career</a>
+            <a href="#gamejams">Game-Jams</a>
+            <a href="#projects">Personal Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    <a>
+        <img id="themeIcon" src="assets/dark-mode.svg" class="theme-icon" onclick="changeMode();" alt="Switch for manipulating dark and light modes">
+    </a>
+    <h1>Zoltán Majoros</h1>
+    <p><i>Software Engineer / Game Developer</i></p>
+    <h2>About</h2>
+    <p>Zoltán is an experienced software engineer based in Bonn, Germany with a diverse range of skills, primarily focusing on game development using Unity. Having worked on multiple released titles, he has a strong understanding of the full application development cycle, from inception to release. Working in small teams and high responsibility roles, he has been in charge of working on a wide variety of game systems, giving him strong fundamentals in multiple areas of Unity development. Being highly self-motivated and a skillful communicator allows him to work effectively in remote positions. In addition to having over 5 years of expertise in Unity development, Zoltán possesses hands-on experience in developing mobile applications, as well as a solid knowledge of C++ and low-level programming.</p>
+    <h2 id="bio">Bio</h2>
+    <p>Started programming at an early age after being introduced to the demoscene, a subculture focused on creating digital art.
+    <p>Pursued a degree in Computer Science at university (University of Miskolc and Vienna University of Technology), where I studied engineering, mathematics and physics, along with other essential computer science subjects.</p>
+    <p>In 2009 started working as a freelance iOS developer until 2017, when I joined Brainseed Factory as a Unity developer working on Squishies, a PlayStation VR title.</p>
+    <p>After the successful release of the game, I joined the team at Senselab.io as a Unity developer working on developing educational and marketing applications for the Hololens and a variety of AR/VR platforms.</p>
+    <p>In late 2019 I was offered a lead developer position at Bigitec for an upcoming educational game project. This role served as a significant platform for my growth as a game developer. I was responsible for creating the technical backbone of the project, which entailed designing and developing a variety of fundamental game systems, using data-driven software architecture paradigms. This included systems for state management, dialogue, quests, input, UI, inventory, localization, and audio, among others. I also developed various editor tools to improve development efficiency.</p>
+    <p>After the project's release, Bigitec ran out of funding and closed down, and I moved on to work at TeamViewer on Frontline Spatial Workplace. </p>
+    <p>Check out my <a href="assets/CV-compact.pdf">compact</a> and <a href="assets/CV-detailed.pdf">detailed</a> CVs.</p>
+    <h2 id="career">Career</h2>
+    <h3>iOS Application Developer (2009-2017)</h3>
+    <p>Select project: <i>Room Reconstruction From Meshes Created Through 3D Scanning</i></p>
+    <img class="preview-image-container" src="assets/CAD-AR-wide-lowres.jpg" data-src="assets/CAD-AR-wide.jpg" width="500px" />
+    <p>Keywords: iOS, AR, 3D-scanning, Swift, Objective C, SceneKit, Remote Work</p>
+    <p>Read my <a href="assets/Room_Reconstruction_From_Meshes_Created_Through_3D_Scanning.pdf">white paper</a> about this project for details.</p>
+    <h3>Game Developer at Brainseed Factory (2017-2018)</h3>
+    <p><i>Squishies - A PlayStation VR/SteamVR game</i></p>
+    <img class="preview-image-container" src="assets/Squishies-wide-lowres.jpg" data-src="assets/Squishies-wide.jpg" width="500px" />
+    <p>Keywords: Unity, VR, Gameplay, Shaders, Optimization, UI, Input, Level Editor, Level Design, SCRUM.</p>
+    <p>Check out the game on <a href="https://store.steampowered.com/app/593060/Squishies/">Steam</a> or on the <a href="https://store.playstation.com/en-us/product/UP3103-CUSA14149_00-SQUISHIES0000000/">PlayStation Store</a>.</p>
+    <h3>AR/VR Developer at senselab.io (2018-2019)</h3>
+    <img class="preview-image-container" src="assets/Senselab-wide-lowres.jpg" data-src="assets/Senselab-wide.jpg" width="500px" />
+    <p>Keywords: Unity, AR, VR, Hololens, Networking, Business Logic, UI</p>
+    <h3>Game Developer at Bigitec/Brainseed Factory (2020-2021)</h3>
+    <p><i>Muslim 3D: an interactive museum/adventure game</i></p>
+    <img class="preview-image-container" src="assets/Muslim3D-wide-lowres.jpg" data-src="assets/Muslim3D-wide.jpg" width="500px" />
+    <p>Keywords: Lead Developer, Unity, Application Architecture Design, Fundamental Game Systems Implementations, Data-Driven Design.</p>
+    <p>Check out the game on <a href="https://store.steampowered.com/app/1503250/Muslim_3D/">Steam</a>.</p>
+    <h3>Software Engineer at TeamViewer (2021-2022)</h3>
+    <p><i>Frontline Spatial: multiplatform AR-based workflow assistance application</i></p>
+    <img class="preview-image-container" src="assets/Spatial-wide-lowres.jpg" data-src="assets/Spatial-wide.jpg" width="500px" />
+    <p>Keywords: Hololens, iOS, Code Reviews, NoSQL, .NET, UI, Mentoring, Remote Work, Corporate software development</p>
+    <h2 id="gamejams">Game Jams</h2>
+    <p>I love participating in game jams. With a twist. Instead of coding, I practice my other passion: writing music.</p>
+    <h3>Global Game Jam 2019</h3>
+    <img class="preview-image-container" src="assets/GGJ2019-wide-lowres.jpg" data-src="assets/GGJ2019-wide.jpg" width="500px" />
+    <p>Check out our game about the homeless slug and a ghostly snail, Pro SnailR II, on the Global Game Jam <a href="https://globalgamejam.org/2019/games/pro-snailr-ii">website</a>!</p>
+    <p>I wrote the song in Logic Pro. Listen to the soundtrack on <a href="https://soundcloud.com/arcanelab/pro-snailr-ii-theme">Soundcloud</a>.</p>
+    <h3>Global Game Jam 2021</h3>
+    <img class="preview-image-container" src="assets/SisterCities-wide-lowres.jpg" data-src="assets/SisterCities-wide.jpg" width="500px" />
+    <p>Created with my dear friends at Wayward Studios, Sister Cities is a game about sustainability, sharing resources and keeping your people happy. Gameplay video and download is available on <a href="https://wayward-studios.itch.io/sistercities">itch.io</a>.</p>
+    <p>Check out my soundtrack written for the game on <a href="https://open.spotify.com/album/2uCJnYtccCWX8ovl1OqT32?si=h-VHslBOSmuQ77kldYY9Ew">Spotify</a>. The album cover was drawn by my son, Bálint.</p>
+    <h2 id="projects">Personal Projects</h2>
+    <h3>RetroSim</h3>
+    <p>A modern fantasy retro-computer simulator written in C++ and SDL.</p>
+    <p>The idea of the RetroSim projects was born in 2011 while I was experimenting with basic graphical effects using an iOS app equipped with a BASIC interpreter for drawing on the screen. It occurred to me that an enhanced version featuring a 6502 assembler and a simple "GPU" reminiscent of the Commodore 64's VIC chip would be an interesting evolution of the idea. So I sat down and compiled a bunch of ideas for this virtual machine. Some of these ideas included adding registers for graphics, sound, input/output, networking, etc. </p>
+    <p>I started out by implementing a 6502 assembler/disassembler/emulator, along with a simple graphics unit. I also added a simple command line debugger/monitor program. It was at this time when I asked myself: what if I designed my own CPU instruction set architecture? That turned out to be a very exciting challenge. So I went ahead and created the A65000 CPU, implemented a simulator and an assembler for it.</p>
+    <p>All of the code was written in C++/SDL to keep the code portable. The project is still work in progress. For more details visit the <a href="https://github.com/arcanelab/RetroSim-Classic/wiki">RetroSim Wiki</a> or check out the latest sources on <a href="https://github.com/arcanelab/RetroSim-Classic">GitHub</a>!</p>
+    <h3>BAssembler</h3>
+    <p>My 6502 assembler originally written for the RetroSim project. Written in C++. Check out the source code on <a href="https://github.com/arcanelab/BASSembler6502">GitHub</a>.</p>
+    <h3>AsmA65k</h3>
+    <p>The assembler for my custom A65000 CPU. Written in C++. Source code is available on <a href="https://github.com/arcanelab/AsmA65k">Github</a>. Documentation is available <a href="https://github.com/arcanelab/RetroSim-Classic/wiki/A65000-Assembler">here</a>.</p>
+    <h3>BDF-Converter</h3>
+    <p>BDF Converter is a command-line tool written in C# that can be used to convert font files in the BDF (Glyph Bitmap Distribution Format) format to PNG images and tile data. The tool generates a PNG image of the font atlas and a binary file containing the tile data. Sources <a href="https://github.com/arcanelab/BDF-Converter">here</a>.</p>
+    <h3>Palette Extractor</h3>
+    <p>Written in Swift, a simple command line tool for extracting color palettes from images. Source is available on <a href="https://github.com/arcanelab/Palette-Extractor">GitHub</a>.</p>
+    <h3>Minesweeper Clone</h3>
+    <p>Written in C++/SDL, as a fun weekend project. Source is available on <a href="https://github.com/arcanelab/MineSweeper">GitHub</a>.</p>
+    <h3>Mandelbrot Fractal Renderer</h3>
+    <p>A small exercise in Go. <a href="https://github.com/arcanelab/Mandelbrot-go/">Source.</a>
+    </p>
+    <h3>C64 Freqs</h3>
+    <p>It's a simple program written in C that calculates the frequency tables for the Commodore 64 from note C-0 to B-7. Source code available <a href="https://github.com/arcanelab/C64Freqs/">here</a>.</p>
+    <h2>Hobbies</h2>
+    <p>I like socializing, playing the guitar, skateboarding, playing table tennis, cycling and writing music.</p>
+    <h2 id="contact">Contact</h2>
+    <p>You can reach me at <a href="mailto:info@arcanelab.com" </a>info@arcanelab.com</p>
+    <footer>
+        <div class="footer-icons">
+            <a href="http://github.com/arcanelab" target="_blank">
+                <img id="githubIcon" src="assets/Github_black.svg" class="icon" alt="Link to Github account" />
+            </a>
+            <a href="http://blog.arcanelab.com/" target="_blank">
+                <img id="tumblrIcon" src="assets/Tumblr_black.svg" class="icon" alt="Link to blog" />
+            </a>
+            <a href="http://twitter.com/arcanelab" target="_blank">
+                <img id="twitterIcon" src="assets/Twitter_black.svg" class="icon" alt="Link to Twitter account" />
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
